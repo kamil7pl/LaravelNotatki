@@ -1,0 +1,2 @@
+use App\Mail\newOrder;
+Uwaga na namespace w newOrder. Można skopiować całą ścieżkę z namespace.
