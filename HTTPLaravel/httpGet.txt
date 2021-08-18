@@ -1,0 +1,9 @@
+public function index()
+    {
+        $response = Http::get('http://kvo.testowe/kamil.php', [
+            'name' => 'Steve',
+            'role' => 'Network Administrator',
+        ]);
+        return $response;
+    }
+Skrypt plus zmienne get name i get role. Metoda index uruchamiana przez get z paska przeglądarki.
