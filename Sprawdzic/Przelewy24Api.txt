@@ -1,1 +1,3 @@
 https://github.com/mnastalski/przelewy24-php
+Czy działa bez composer require mnastalski/przelewy24-php
+?
