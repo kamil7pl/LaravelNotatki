@@ -1,3 +1,41 @@
 https://github.com/mnastalski/przelewy24-php
 Czy działa bez composer require mnastalski/przelewy24-php
 ?
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Przelewy24\Przelewy24;
+
+class PaymentsController extends Controller
+{
+    public function index()
+    {
+        $przelewy24 = new Przelewy24([
+        'merchant_id' => 'numer',
+        'crc' => 'crc',
+        'live' => false, // `true` for production/live mode
+        ]);
+
+
+        $transaction = $przelewy24->transaction([
+            'session_id' => 'test1',
+            'url_return' => 'https://github.com/kamil7pl?tab=repositories',
+            'url_status' => 'url to which the transaction status webhook will be sent',
+            'amount' => 10150,
+            'description' => 'transaction description',
+            'email' => 'kamil7.pl@gmail.com',
+        ]);
+        
+        return view('payments.index')
+        ->with('url', $transaction->redirectUrl());
+    }
+}
+
+plik payments index.blade.php
+<form action="{{$url}}">
+    <input type ="submit" value="ok" />
+</form>
+
